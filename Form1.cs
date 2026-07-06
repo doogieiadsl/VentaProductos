@@ -16,5 +16,23 @@ namespace VentaProducto
         {
             InitializeComponent();
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void MostrarFecha()
+        {
+            lblfecha.Text = DateTime.Now.ToShortDateString();
+        }
+        private void MostrarHora()
+        {
+            lblhora.Text = DateTime.Now.ToShortTimeString();
+        }
     }
 }
