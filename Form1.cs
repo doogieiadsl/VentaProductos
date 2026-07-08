@@ -15,6 +15,8 @@ namespace VentaProducto
     {
         //Inicializacion de un arreglo
         static string[] productos = { "Teclado", "Mouse", "Monitor", "Impresora", "Bocinas" };
+        //Inicializamos total
+        double Total = 0;
         // asignacion a un arrayList
         ArrayList aproductos = new ArrayList();
         //Inicializavion de la calse Ventas
@@ -31,6 +33,7 @@ namespace VentaProducto
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            lblneto.Text = "0.00";
             MostrarFecha();
             MostrarHora();
             LimpiarControles();
@@ -50,7 +53,6 @@ namespace VentaProducto
             txtcantidad.Clear();
             cmbProducto.Text = "Selecciona un producto";
             lblprecio.Text = "0.00";
-            lblneto.Text = "0.00";
             txtnombre.Focus();
         }
         private void Llenacombo()
@@ -88,7 +90,13 @@ namespace VentaProducto
             fila.Cells[4].Value = ObjVentas.CalcularDescuento().ToString("C");
             fila.Cells[5].Value = ObjVentas.CalcularNeto().ToString("C");
 
+            //Llenamos la fila con los datos
             dataGridView1.Rows.Add(fila);
+
+            //Actualizamos Total con cada producto que agreguemos
+            Total += ObjVentas.CalcularNeto();
+            lblneto.Text = Total.ToString("C");
+
             // Limpiamos los campos
             LimpiarControles();
         }
